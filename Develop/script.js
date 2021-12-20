@@ -1,16 +1,11 @@
-// Grab buttons and other elements needed from HTML
-
-let now = moment().format("HH");
-
 // Moment.js code for current date and time + display on innerHTML
 
 let dayInfo = moment().format('LL');
 let displayDay = document.querySelector("#currentDay");
 displayDay.innerHTML = dayInfo;
+let saveBtnEl = document.querySelector(".saveBtn")
 
-// For loop for calculating if "i" is >, <, or === current hour, add css classes accordingly
-// Grab hour (div id) from each time block and compare to "now", 
-console.log(now)
+// Function for checking time with moment.hour and comparing to div id 
 
 function checkTime() {
 
@@ -22,16 +17,19 @@ function checkTime() {
 
         let timeBlock = parseInt($(this).attr("id"));
 
+        // If id of time block is less than the current time, "past" class is applied
         if (timeBlock < currentTime) {
             $(this).removeClass("present");
             $(this).removeClass("future");
             $(this).addClass("past");
         }
+        // If id of time block is equal to current time, "present" class is applied
         else if (timeBlock === currentTime) {
             $(this).removeClass("future");
             $(this).removeClass("past");
             $(this).addClass("present");
-     }
+        }
+        // If id of time block is anything else (greater than), "future" class is applied
         else {
             $(this).removeClass("present");
             $(this).removeClass("past");
@@ -40,14 +38,28 @@ function checkTime() {
     })
 }
 
+// setInterval running checkTime function every minute to update page
+
 setInterval(checkTime, 60000);
-
-// setInterval to make sure loop is being run often enough to  check times (?)
-
 
 // Save button click function to save text in local storage
 
+saveBtnEl.onclick = saveTasks
+
+function saveTasks() {
+    console.log("button clicked")
+    let newTasks = document.querySelector("#task-text").value;
+    localStorage.setItem('tasks', JSON.stringify(newTasks));
+}
 
 // Retrieve saved texted from local storage after refresh
+
+function displayTasks() {
+    let pastTasks = JSON.parse(localStorage.getItem('tasks'));
+    tasks = document.querySelector("#task-text");
+    tasks.textContent = pastTasks;
+}
+
+displayTasks()
 
 // Also need a way to clear out schedule once the day has changed (??)
