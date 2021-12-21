@@ -3,7 +3,6 @@
 let dayInfo = moment().format('LL');
 let displayDay = document.querySelector("#currentDay");
 displayDay.innerHTML = dayInfo;
-let saveBtnEl = document.querySelector(".saveBtn")
 
 // Function for checking time with moment.hour and comparing to div id 
 
@@ -44,7 +43,7 @@ setInterval(checkTime, 60000);
 
 // Save button click function to save text in local storage
 
-saveBtnEl.onclick = saveTasks
+$(".saveBtn").on("click", saveTasks)
 
 function saveTasks() {
     console.log("button clicked")
@@ -62,4 +61,7 @@ function displayTasks() {
 
 displayTasks()
 
-// Also need a way to clear out schedule once the day has changed (??)
+// Function to clear schedule once day has changed
+
+
+
