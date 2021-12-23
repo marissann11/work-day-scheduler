@@ -43,23 +43,40 @@ setInterval(checkTime, 60000);
 
 // Save button click function to save text in local storage
 
-$(".saveBtn").on("click", saveTasks)
+$(".saveBtn").click(function() {
+    // Since text box div is a sibling of the save button, this grabs the value of whatever task user inputs
+    let text = $(this).siblings("#task-text").val();
+    // This makes the hour variable the value of the id it is given in the HTML
+    let hour = $(this).parent().attr("id");
+    localStorage.setItem(hour, JSON.stringify(text))
+});
 
-function saveTasks() {
-    console.log("button clicked")
-    let newTasks = document.querySelector("#task-text").value;
-    localStorage.setItem('tasks', JSON.stringify(newTasks));
-}
-
-// Retrieve saved texted from local storage after refresh
+// Function to display items from local storage onto page during reload
 
 function displayTasks() {
-    let pastTasks = JSON.parse(localStorage.getItem('tasks'));
-    tasks = document.querySelector("#task-text");
-    tasks.textContent = pastTasks;
+    
+    let enterItem9 = JSON.parse(localStorage.getItem(9))
+    $("#9 #task-text").val(enterItem9);
+    let enterItem10 = JSON.parse(localStorage.getItem(10))
+    $("#10 #task-text").val(enterItem10);
+    let enterItem11 = JSON.parse(localStorage.getItem(11))
+    $("#11 #task-text").val(enterItem11);
+    let enterItem12 = JSON.parse(localStorage.getItem(12))
+    $("#12 #task-text").val(enterItem12);
+    let enterItem13 = JSON.parse(localStorage.getItem(13))
+    $("#13 #task-text").val(enterItem13);
+    let enterItem14 = JSON.parse(localStorage.getItem(14))
+    $("#14 #task-text").val(enterItem14);
+    let enterItem15 = JSON.parse(localStorage.getItem(15))
+    $("#15 #task-text").val(enterItem15);
+    let enterItem16 = JSON.parse(localStorage.getItem(16))
+    $("#16 #task-text").val(enterItem16);
+    let enterItem17 = JSON.parse(localStorage.getItem(17))
+    $("#17 #task-text").val(enterItem17);
 }
 
 displayTasks()
+
 
 // Function to clear schedule once day has changed
 
