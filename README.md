@@ -37,6 +37,6 @@ https://marissann11.github.io/work-day-scheduler-week5/
 
 # Screenshot
 
-![ScreenShot](./Develop/final-screenshot.pdf?raw=true "Screenshot")
+![ScreenShot](./Develop/final-screenshot.png?raw=true "Screenshot")
 
 
