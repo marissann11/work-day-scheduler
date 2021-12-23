@@ -4,7 +4,7 @@ let dayInfo = moment().format('LL');
 let displayDay = document.querySelector("#currentDay");
 displayDay.innerHTML = dayInfo;
 
-// Function for checking time with moment.hour and comparing to div id 
+// Function for checking time with moment.hour and comparing to div id
 
 function checkTime() {
 
@@ -35,6 +35,23 @@ function checkTime() {
             $(this).addClass("future");
         }
     })
+    checkMidnight();
+}
+
+// Check midnight function called at the end of check time, if a new day has started, local storage will be cleared
+
+function checkMidnight() {
+    $(".time-block").each(function() {
+        let timeBlock = parseInt($(this).attr("id"));
+        const currentTime = moment().hour();
+        if(timeBlock > currentTime) {
+            console.log("its a new day, hopefully your storage is cleared");
+            localStorage.clear();
+        } else {
+            console.log("this function is running")
+            return;
+        }
+    })
 }
 
 // setInterval running checkTime function every minute to update page
@@ -49,6 +66,7 @@ $(".saveBtn").click(function() {
     // This makes the hour variable the value of the id it is given in the HTML
     let hour = $(this).parent().attr("id");
     localStorage.setItem(hour, JSON.stringify(text))
+    //setStorage();
 });
 
 // Function to display items from local storage onto page during reload
@@ -74,6 +92,3 @@ function displayTasks() {
     let enterItem17 = JSON.parse(localStorage.getItem(17))
     $("#17 #task-text").val(enterItem17);
 }
-
-// Function to clear schedule once day has changed
-
