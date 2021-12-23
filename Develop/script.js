@@ -10,7 +10,7 @@ function checkTime() {
 
     console.log("time is being checked")
 
-    let currentTime = moment().hour();
+    const currentTime = moment().hour();
 
     $(".time-block").each(function() {
 
@@ -75,10 +75,5 @@ function displayTasks() {
     $("#17 #task-text").val(enterItem17);
 }
 
-displayTasks()
-
-
 // Function to clear schedule once day has changed
-
-
 
