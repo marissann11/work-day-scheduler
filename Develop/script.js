@@ -35,25 +35,32 @@ function checkTime() {
             $(this).addClass("future");
         }
     })
-    checkMidnight();
+    //checkMidnight();
 }
 
 // Check midnight function called at the end of check time, if a new day has started, local storage will be cleared
 
-function checkMidnight() {
-    $(".time-block").each(function() {
-        let timeBlock = parseInt($(this).attr("id"));
-        const currentTime = moment().hour();
-        if(timeBlock > currentTime) {
-            console.log("its a new day, hopefully your storage is cleared");
-            localStorage.clear();
-        } else {
-            console.log("this function is running")
-            return;
-        }
-    })
-}
+// function checkMidnight() {
+//     const currentTime = moment().hour();
+//     let time9 = document.getElementById("9");
+//     let time10 = document.getElementById("10");
+//     let time11 = document.getElementById("11");
+//     let time12 = document.getElementById("12");
+//     let time13 = document.getElementById("13");
+//     let time14 = document.getElementById("14");
+//     let time15 = document.getElementById("15");
+//     let time16 = document.getElementById("16");
+//     let time17 = document.getElementById("17");
 
+//     if (time9 > currentTime && time10 > currentTime && time11 > currentTime && time12 > currentTime && time13 > currentTime && time14 > currentTime && time15 > currentTime && time16 > currentTime && time17 > currentTime) {
+//         console.log("storage should be cleared");
+//         localStorage.clear();
+//     } else {
+//         return;
+//     }
+
+// }
+ 
 // setInterval running checkTime function every minute to update page
 
 setInterval(checkTime, 60000);
